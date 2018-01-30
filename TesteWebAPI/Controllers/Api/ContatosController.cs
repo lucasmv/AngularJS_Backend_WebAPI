@@ -15,20 +15,41 @@ namespace TesteWebAPI.Controllers.Api
     {
         [HttpGet]
         [Route("api/Contatos")]
-        public IEnumerable<ContatoDTO> GetContatos()
+        public HttpResponseMessage GetContatos()
         {
             try
             {
                 using (ISession session = FluentNHibernateHelper.OpenSession())
                 {
                     var contatos = Mapper.Map<List<ContatoDTO>>(session.Query<Contato>());
-                    return contatos;
+                    return Request.CreateResponse(HttpStatusCode.OK, contatos);
                 }
             }
             catch (Exception ex)
             {
-                Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
-                return null;
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
+        [HttpGet]
+        [Route("api/Contatos/{id:int}")]
+        public HttpResponseMessage GetContato(int id)
+        {
+            try
+            {
+                using (ISession session = FluentNHibernateHelper.OpenSession())
+                {
+                    var contato = Mapper.Map<ContatoDTO>(session.Get<Contato>(id));
+
+                    if (contato == null)
+                        return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Contato não encontrado.");
+
+                    return Request.CreateResponse(HttpStatusCode.OK, contato);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
 
@@ -41,7 +62,9 @@ namespace TesteWebAPI.Controllers.Api
                 try
                 {
                     var contatoSalvar = Mapper.Map<Contato>(contato);
-                    contatoSalvar.OperadoraId = contatoSalvar.Operadora.Id;
+
+                    if (contatoSalvar.Operadora != null)
+                        contatoSalvar.OperadoraId = contatoSalvar.Operadora.Id;
 
                     session.SaveOrUpdate(contatoSalvar);
                     session.Flush();
