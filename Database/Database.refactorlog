@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="9f3354a0-946b-466b-a982-6100cce43aea" ChangeDateTime="01/26/2018 12:05:19">
+    <Property Name="ElementName" Value="[dbo].[OPERADORA].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[OPERADORA]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="7c11cc23-90db-495d-864d-89464e85afb0" ChangeDateTime="01/26/2018 12:08:19">
+    <Property Name="ElementName" Value="[dbo].[CONTATO].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[CONTATO]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="e3c2c34a-477d-4e57-86f5-609da6b16f3b" ChangeDateTime="01/26/2018 12:11:51">
+    <Property Name="ElementName" Value="[dbo].[FK_CONTATO_ToTable]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[CONTATO]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_CONTATO_To_OPERADORA]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="90778596-2de5-400a-8778-f14760ce4918" ChangeDateTime="01/26/2018 12:11:56">
+    <Property Name="ElementName" Value="[dbo].[FK_CONTATO_To_OPERADORA]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[CONTATO]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_CONTATO__OPERADORA]" />
+  </Operation>
+</Operations>
