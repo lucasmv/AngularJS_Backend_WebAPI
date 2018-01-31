@@ -16,7 +16,7 @@ namespace TesteWebAPI.Models
         public string Nome { get; set; }
         public string Telefone { get; set; }
         public DateTime Data { get; set; }
-        public int OperadoraId { get; set; }
+        public int? OperadoraId { get; set; }
         public string Serial { get; set; }
         public OperadoraDTO Operadora { get; set; }
     }

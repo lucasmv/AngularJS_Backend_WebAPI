@@ -12,7 +12,7 @@ namespace DataModel.Entities
         public virtual string Nome { get; set; }
         public virtual string Telefone { get; set; }
         public virtual DateTime Data { get; set; }
-        public virtual int OperadoraId { get; set; }
+        public virtual int? OperadoraId { get; set; }
         public virtual string Serial { get; set; }
         public virtual Operadora Operadora { get; set; }
     }
